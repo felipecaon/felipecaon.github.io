@@ -1,0 +1,36 @@
+baseURL = "http://caon.io/"
+languageCode = "en-us"
+title = "caon.io"
+theme = "yinyang"
+DefaultContentLanguage = "en"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    guessSyntax = true
+    noClasses = true
+    style = "bw"
+    tabWidth = 2
+
+[author]
+  name = "caon"
+  homepage = "https://caon.io/"
+
+[params]
+mainSections = ["posts"]
+headTitle = "Caon"
+description = "Some content here."
+disqus = ""
+extraHead = '<script async src="https://www.googletagmanager.com/gtag/js?id=UA-xxx"></script>'
+[[params.socials]]
+name = "About Me"
+link = "/about"
+[[params.socials]]
+name = "Github"
+link = "https://github.com/felipecaon"
+postHeaderContent = ""
+postFooterContent = ""
+# extraCSSFiles = ["css/foo.css", "css/bar.css"]
+extraCSSFiles = []
