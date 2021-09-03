@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on caon.io</title>
-    <link>http://caon.io/posts/</link>
+    <link>https://caon.io/posts/</link>
     <description>Recent content in Posts on caon.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pr-br</language>
-    <lastBuildDate>Wed, 01 Sep 2021 22:57:29 -0300</lastBuildDate><atom:link href="http://caon.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 01 Sep 2021 22:57:29 -0300</lastBuildDate><atom:link href="https://caon.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Sample</title>
-      <link>http://caon.io/posts/sample/</link>
+      <link>https://caon.io/posts/sample/</link>
       <pubDate>Wed, 01 Sep 2021 22:57:29 -0300</pubDate>
       
-      <guid>http://caon.io/posts/sample/</guid>
+      <guid>https://caon.io/posts/sample/</guid>
       <description>This is a sample
  one two  1&amp;lt;h1&amp;gt;hello&amp;gt;&amp;lt;/hello&amp;gt; </description>
     </item>
