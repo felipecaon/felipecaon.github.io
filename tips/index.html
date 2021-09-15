@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="pr-br">
 <head>
-	<meta name="generator" content="Hugo 0.87.0" />
   <link rel="preload" href="/lib/font-awesome/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
   <link rel="preload" href="/lib/font-awesome/webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
   <link rel="preload" href="/lib/font-awesome/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="anonymous">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>caon.io</title>
-  <link rel = 'canonical' href = 'https://caon.io/'>
+  <title> AppsecTips | caon.io</title>
+  <link rel = 'canonical' href = 'https://caon.io/tips/'>
   <meta name="description" content="Reach me out `felipecaon[at]gmail[dot]com`">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="all,follow">
@@ -62,58 +61,43 @@
 
 
     
-  <section id="about">
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <div class="content" itemprop="articleBody">
   
-    Reach me out <code>felipecaon[at]gmail[dot]com</code>
-  
-  
-      <p>
-      
-      
-      
-        I'm also here <a class="icon" target="_blank" rel="noopener" href="https://github.com/felipecaon" aria-label="github">
-          <i class="fab fa-github" aria-hidden="true"></i>
-        </a>
-        
-        
-      
-      </p>
-  
-  
-  </section>
-
-  <section id="writing">
-    <span class="h1"><a href="https://caon.io/posts">Writings</a></span>
-    
-
-    
-    
-      
-    
-    
-    
-    
-    <ul class="post-list">
-      
-        <li class="post-item">
-          <div class="meta"><time datetime="2021-09-01 22:57:29 -0300 -03" itemprop="datePublished">2021-09-01</time></div>
-          <span><a href="https://caon.io/posts/sample/">Sample</a></span>
-        </li>
-      
-    </ul>
-
-    
-
-
-
-    
-  </section>
+    <p>This is a forever ongoing post, containing appsec tips to know when testing applications.
+Most of tips were found in books, twitter or medium posts.</p>
+<h2 id="open-redirect">Open Redirect</h2>
+<p>Often a bug that brings impact when chained.</p>
+<h3 id="open-redirect-in-helpdesk">Open redirect in helpdesk</h3>
+<p>Sometimes a website will redirect only to a helpdesk subdomain, this behavior is interesting because it is possible to create a custom subdomain a place a <code>script</code> that will redirect to an evil website. Making it a open redirect.</p>
+<h2 id="csrf">CSRF</h2>
+<p>CRSF can be found when:</p>
+<ul>
+<li>There&rsquo;s no CSRF protection</li>
+<li><code>GET</code> requests make calls that change data</li>
+<li><code>POST</code> requests with no <code>OPTIONS</code> (preflight) call. Bad implementation.</li>
+<li>CORS is badly configured</li>
+</ul>
+<p>Common bypasses:</p>
+<ul>
+<li>Change desired <code>POST</code> request to <code>GET</code>.</li>
+<li>Change <code>POST</code> <code>Content-Type</code> header to:
+<ul>
+<li><code>application/x-www-form-urlencoded</code></li>
+<li><code>multipart/form-data</code></li>
+<li><code>text/plain</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="http-parameter-pollution">HTTP parameter pollution</h2>
+<p>When searching for HPP keep in mind some servers handle parameters differently.</p>
+<p>Take <code>http://example.com?username=foo&amp;username=bar</code> as an example. PHP and Apache use the last <code>username</code> occurence. Tomcat uses the first occurence. ASP and IIS user all occurences.</p>
+<p>A study containing all the servers can be found here: <a href="https://owasp.org/www-pdf-archive/AppsecEU09_CarettoniDiPaola_v0.8.pdf">https://owasp.org/www-pdf-archive/AppsecEU09_CarettoniDiPaola_v0.8.pdf</a></p>
 
   
-  
-    
-  
-  
+  </div>
+</article>
 
 
     <footer id="footer">
