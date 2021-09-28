@@ -14,6 +14,9 @@
       
       <guid>https://caon.io/tips/</guid>
       <description>This is a forever ongoing post, containing appsec tips to know when testing applications. Most of tips were found in books, twitter or medium posts.
+Encodings Sometimes it is necessary to decode an authentication string or HTML encode information, for all purposes, use CyberChef:
+https://gchq.github.io/CyberChef/
+Pro Tip: The magic formula is truly magic.
 Open Redirect Often a bug that brings impact when chained.
 Open redirect in helpdesk Sometimes a website will redirect only to a helpdesk subdomain, this behavior is interesting because it is possible to create a custom subdomain a place a script that will redirect to an evil website.</description>
     </item>

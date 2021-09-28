@@ -67,6 +67,10 @@
   
     <p>This is a forever ongoing post, containing appsec tips to know when testing applications.
 Most of tips were found in books, twitter or medium posts.</p>
+<h2 id="encodings">Encodings</h2>
+<p>Sometimes it is necessary to decode an authentication string or HTML encode information, for all purposes, use CyberChef:</p>
+<p><a href="https://gchq.github.io/CyberChef/">https://gchq.github.io/CyberChef/</a></p>
+<p><strong>Pro Tip:</strong> The <code>magic</code> formula is truly magic.</p>
 <h2 id="open-redirect">Open Redirect</h2>
 <p>Often a bug that brings impact when chained.</p>
 <h3 id="open-redirect-in-helpdesk">Open redirect in helpdesk</h3>
@@ -94,6 +98,23 @@ Most of tips were found in books, twitter or medium posts.</p>
 <p>When searching for HPP keep in mind some servers handle parameters differently.</p>
 <p>Take <code>http://example.com?username=foo&amp;username=bar</code> as an example. PHP and Apache use the last <code>username</code> occurence. Tomcat uses the first occurence. ASP and IIS user all occurences.</p>
 <p>A study containing all the servers can be found here: <a href="https://owasp.org/www-pdf-archive/AppsecEU09_CarettoniDiPaola_v0.8.pdf">https://owasp.org/www-pdf-archive/AppsecEU09_CarettoniDiPaola_v0.8.pdf</a></p>
+<h2 id="xss">XSS</h2>
+<p><a href="http://html5sec.org/">http://html5sec.org/</a> is a good place to find vectors, maintained by Cure53</p>
+<h2 id="ssrf">SSRF</h2>
+<p>Sometimes sites offer the possibility to make external requests using their server, what if we could user their &ldquo;external&rdquo; service to make requests for internal resources. That&rsquo;s SSRF.</p>
+<p>If the site is hosted in amazon, it is possible to get internal information by requesting the urls:</p>
+<pre><code>http://169.254.169.254/latest/meta-data/hostname
+http://169.254.169.254/latest/meta-data/iam/securty-credentials
+</code></pre><p>Another idea is to try and request IP&rsquo;s that we know that are internal:</p>
+<pre><code>10.0.0.0 to 10.255.255.55
+100.64.0.0 to 10.127.255.255
+127.0.0.0 to 127.255.255.255
+127.16.0.0 to 127.31.255.255
+192.0.0.0 to 192.0.0.255
+198.18.0.0 to 198.19.255.255
+</code></pre><p>Sometimes websites block external acess to localhost (ie 127.0.0.1). Fortunately it is possible to bypass restrictions by referencing localhost in other ways.</p>
+<p>Did you know that <code>127.0.0.1</code> and <code>127.1</code> are the same thing?</p>
+<p><a href="https://www.pyson.org/tools/ip_address_converter.php?ip=127.0.0.1">https://www.pyson.org/tools/ip_address_converter.php?ip=127.0.0.1</a> helps to discover alternative ways to reference localhost.</p>
 
   
   </div>
