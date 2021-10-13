@@ -6,7 +6,16 @@
     <description>Recent content in Posts on caon.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pr-br</language>
-    <lastBuildDate>Wed, 01 Sep 2021 22:57:29 -0300</lastBuildDate><atom:link href="https://caon.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 12 Oct 2021 22:49:07 -0300</lastBuildDate><atom:link href="https://caon.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CVE 2021 38314 - WordPress and Redux Write up</title>
+      <link>https://caon.io/posts/cve-2021-38314writeup/</link>
+      <pubDate>Tue, 12 Oct 2021 22:49:07 -0300</pubDate>
+      
+      <guid>https://caon.io/posts/cve-2021-38314writeup/</guid>
+      <description>This is an upcoming writeup, this CVE is pretty new I could not find any article explaining the actual exploitation steps. Just found a nuclei templates that shows the half-way concept.</description>
+    </item>
+    
     <item>
       <title>Sample</title>
       <link>https://caon.io/posts/sample/</link>
