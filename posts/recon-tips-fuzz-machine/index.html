@@ -97,13 +97,20 @@
     
     <div class="content" itemprop="articleBody">
       <p>If you are a security researcher, security engineer, red teamer, bug hunter or really anything related to security, you will, eventually, realize that it is next to impossible to keep everything mapped together in a company with a large infrastructure. Especially when needing to test from a blackbox approach.</p>
-<p>There&rsquo;s a lot of ground to cover, to keep servers secure it is necessary to have a minimum amount of automation running. Scripts scannning for takeovers, injections and fuzzing.</p>
-<p>Fuzzing is not as easy as it seems, of course we can pick a wordlist from seclists and throw it into some tool and wait for results and filter from that. But, a lot of servers try to mitigate fuzzing atacks by returning spurious reponses sizes or 200 as status code even if the file does not exist. Not to mention it becomes increasingly harder to filter results for large scopes.</p>
-<p><a href="%22https://github.com/ffuf/ffuf%22">ffuf</a> offers an auto calibrate solution that tries to bypass common fuzzing mitigrations. read about <code>-ac</code> and <code>-acc</code> flag in documentation.</p>
+<p>There&rsquo;s a lot of ground to cover, to keep servers secure it is necessary to have a minimum amount of automation running. Scripts scanning for takeovers, injections and fuzzing.</p>
+<p>Fuzzing is not as easy as it seems, of course we can pick a wordlist from seclists and throw it into some tool and wait for results and filter from that. But, a lot of servers try to mitigate fuzzing attacks by returning spurious responses sizes or 200 as status code even if the file does not exist. Not to mention it becomes increasingly harder to filter results for large scopes.</p>
+<p><a href="https://github.com/ffuf/ffuf">ffuf</a> offers an auto calibrate solution that tries to bypass common fuzzing mitigations. read about <code>-ac</code> and <code>-acc</code> flag in documentation.</p>
 <p>The <code>-ac</code> flag helps a lot but running only once against a big wordlist is not the best approach, eventually you will notice that the application returns a lot of dull responses for paths that are not used by <code>-ac</code>.</p>
 <h2 id="proposed-solution-for-a-fuzz-machine">Proposed solution for a Fuzz Machine</h2>
 <p>The approach I use for my fuzz machine is the folllowing:</p>
-<p><img src="/img/fuzz-machine/ufzz_machine.png" alt="This is an image"></p>
+<p><img src="/img/fuzz-machine/fuzz_machine.png" alt="Fuzz Machine"></p>
+<p>It is basically a recursive ffuf with more size filters. False positive sizes are saved to mongo after the iteration finishes, the next iteration will place the known bad sizes in mongo <code>-fs</code> filter and run fuzzing from that.</p>
+<p>As expected, the first runs will have a lot of false positives. The false positive occurences go down after each iteration because the database gets populated and less noise is generated.</p>
+<h2 id="wordlists-to-use">Wordlists to use</h2>
+<p>I like to search for full path that contain sensitive files or full paths that may lead do known CVEs. Exploit-DB and their google hacking database helps with that, unfortuantely I could not find a scraper that grabs their entire site and make a wordlist from that, maybe I&rsquo;ll create one.</p>
+<p><a href="https://github.com/ayoubfathi/leaky-paths">Leakypaths</a> repository has good wordlists in that matter.</p>
+<p><a href="https://gist.github.com/vijay922/9132266d9078eca18ab37e4b144429d9">This gist</a> also contains great words that can be used.</p>
+<p><a href="https://github.com/milo2012/pathbrute">pathbrute</a> is a little bit outdated but contains good scraped content.</p>
 
     </div>
   </article>
@@ -136,6 +143,7 @@
       <nav id="TableOfContents">
   <ul>
     <li><a href="#proposed-solution-for-a-fuzz-machine">Proposed solution for a Fuzz Machine</a></li>
+    <li><a href="#wordlists-to-use">Wordlists to use</a></li>
   </ul>
 </nav>
     </div>
