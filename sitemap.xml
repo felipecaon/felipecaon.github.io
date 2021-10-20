@@ -3,12 +3,15 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://caon.io/</loc>
-    <lastmod>2021-10-12T22:49:07-03:00</lastmod>
-  </url><url>
-    <loc>https://caon.io/posts/cve-2021-38314writeup/</loc>
-    <lastmod>2021-10-12T22:49:07-03:00</lastmod>
+    <lastmod>2021-10-20T08:54:31-03:00</lastmod>
   </url><url>
     <loc>https://caon.io/posts/</loc>
+    <lastmod>2021-10-20T08:54:31-03:00</lastmod>
+  </url><url>
+    <loc>https://caon.io/posts/recon-tips-fuzz-machine/</loc>
+    <lastmod>2021-10-20T08:54:31-03:00</lastmod>
+  </url><url>
+    <loc>https://caon.io/posts/cve-2021-38314writeup/</loc>
     <lastmod>2021-10-12T22:49:07-03:00</lastmod>
   </url><url>
     <loc>https://caon.io/tips/</loc>

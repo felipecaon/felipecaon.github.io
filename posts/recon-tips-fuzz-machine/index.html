@@ -6,8 +6,8 @@
   <link rel="preload" href="/lib/font-awesome/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="anonymous">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title> CVE 2021 38314 - WordPress and Redux Write up | caon.io</title>
-  <link rel = 'canonical' href = 'https://caon.io/posts/cve-2021-38314writeup/'>
+  <title> Recon Tips - Fuzz Machine Setup | caon.io</title>
+  <link rel = 'canonical' href = 'https://caon.io/posts/recon-tips-fuzz-machine/'>
   <meta name="description" content="Reach me out `felipecaon[at]gmail[dot]com`">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="all,follow">
@@ -54,17 +54,11 @@
       <ul>
         
         <li>
-          <a class="icon" href=" https://caon.io/tips/" aria-label="Previous">
+          <a class="icon" href=" https://caon.io/posts/cve-2021-38314writeup/" aria-label="Previous">
             <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
           </a>
         </li>
         
-        
-        <li>
-          <a class="icon" href="https://caon.io/posts/recon-tips-fuzz-machine/" aria-label="Next">
-            <i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i>
-          </a>
-        </li>
         
         <li>
           <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
@@ -83,13 +77,13 @@
   <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
     <header>
       <h1 class="posttitle" itemprop="name headline">
-        CVE 2021 38314 - WordPress and Redux Write up
+        Recon Tips - Fuzz Machine Setup
       </h1>
       <div class="meta">
         
         <div class="postdate">
           
-          <time datetime="2021-10-12 22:49:07 -0300 -03" itemprop="datePublished">2021-10-12</time>
+          <time datetime="2021-10-20 08:54:31 -0300 -03" itemprop="datePublished">2021-10-20</time>
           
         </div>
         
@@ -102,7 +96,14 @@
   
     
     <div class="content" itemprop="articleBody">
-      <p>This is an upcoming writeup, this CVE is pretty new I could not find any article explaining the actual exploitation steps. Just found a nuclei templates that shows the half-way concept.</p>
+      <p>If you are a security researcher, security engineer, red teamer, bug hunter or really anything related to security, you will, eventually, realize that it is next to impossible to keep everything mapped together in a company with a large infrastructure. Especially when needing to test from a blackbox approach.</p>
+<p>There&rsquo;s a lot of ground to cover, to keep servers secure it is necessary to have a minimum amount of automation running. Scripts scannning for takeovers, injections and fuzzing.</p>
+<p>Fuzzing is not as easy as it seems, of course we can pick a wordlist from seclists and throw it into some tool and wait for results and filter from that. But, a lot of servers try to mitigate fuzzing atacks by returning spurious reponses sizes or 200 as status code even if the file does not exist. Not to mention it becomes increasingly harder to filter results for large scopes.</p>
+<p><a href="%22https://github.com/ffuf/ffuf%22">ffuf</a> offers an auto calibrate solution that tries to bypass common fuzzing mitigrations. read about <code>-ac</code> and <code>-acc</code> flag in documentation.</p>
+<p>The <code>-ac</code> flag helps a lot but running only once against a big wordlist is not the best approach, eventually you will notice that the application returns a lot of dull responses for paths that are not used by <code>-ac</code>.</p>
+<h2 id="proposed-solution-for-a-fuzz-machine">Proposed solution for a Fuzz Machine</h2>
+<p>The approach I use for my fuzz machine is the folllowing:</p>
+<p><img src="/img/fuzz-machine/ufzz_machine.png" alt="This is an image"></p>
 
     </div>
   </article>
@@ -132,7 +133,11 @@
 
     
     <div id="toc-footer" style="display: none">
-      <nav id="TableOfContents"></nav>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#proposed-solution-for-a-fuzz-machine">Proposed solution for a Fuzz Machine</a></li>
+  </ul>
+</nav>
     </div>
     
 
@@ -145,47 +150,47 @@
   
   
   <li>
-    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fcaon.io%2fposts%2fcve-2021-38314writeup%2f" aria-label="Facebook">
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fcaon.io%2fposts%2frecon-tips-fuzz-machine%2f" aria-label="Facebook">
       <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fcaon.io%2fposts%2fcve-2021-38314writeup%2f&text=CVE%202021%2038314%20-%20WordPress%20and%20Redux%20Write%20up" aria-label="Twitter">
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fcaon.io%2fposts%2frecon-tips-fuzz-machine%2f&text=Recon%20Tips%20-%20Fuzz%20Machine%20Setup" aria-label="Twitter">
       <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fcaon.io%2fposts%2fcve-2021-38314writeup%2f&title=CVE%202021%2038314%20-%20WordPress%20and%20Redux%20Write%20up" aria-label="Linkedin">
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fcaon.io%2fposts%2frecon-tips-fuzz-machine%2f&title=Recon%20Tips%20-%20Fuzz%20Machine%20Setup" aria-label="Linkedin">
       <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fcaon.io%2fposts%2fcve-2021-38314writeup%2f&is_video=false&description=CVE%202021%2038314%20-%20WordPress%20and%20Redux%20Write%20up" aria-label="Pinterest">
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fcaon.io%2fposts%2frecon-tips-fuzz-machine%2f&is_video=false&description=Recon%20Tips%20-%20Fuzz%20Machine%20Setup" aria-label="Pinterest">
       <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="mailto:?subject=CVE%202021%2038314%20-%20WordPress%20and%20Redux%20Write%20up&body=Check out this article: https%3a%2f%2fcaon.io%2fposts%2fcve-2021-38314writeup%2f" aria-label="Email">
+    <a class="icon" href="mailto:?subject=Recon%20Tips%20-%20Fuzz%20Machine%20Setup&body=Check out this article: https%3a%2f%2fcaon.io%2fposts%2frecon-tips-fuzz-machine%2f" aria-label="Email">
       <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fcaon.io%2fposts%2fcve-2021-38314writeup%2f&title=CVE%202021%2038314%20-%20WordPress%20and%20Redux%20Write%20up" aria-label="Pocket">
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fcaon.io%2fposts%2frecon-tips-fuzz-machine%2f&title=Recon%20Tips%20-%20Fuzz%20Machine%20Setup" aria-label="Pocket">
       <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fcaon.io%2fposts%2fcve-2021-38314writeup%2f&title=CVE%202021%2038314%20-%20WordPress%20and%20Redux%20Write%20up" aria-label="reddit">
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fcaon.io%2fposts%2frecon-tips-fuzz-machine%2f&title=Recon%20Tips%20-%20Fuzz%20Machine%20Setup" aria-label="reddit">
       <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fcaon.io%2fposts%2fcve-2021-38314writeup%2f&name=CVE%202021%2038314%20-%20WordPress%20and%20Redux%20Write%20up&description=This%20is%20an%20upcoming%20writeup%2c%20this%20CVE%20is%20pretty%20new%20I%20could%20not%20find%20any%20article%20explaining%20the%20actual%20exploitation%20steps.%20Just%20found%20a%20nuclei%20templates%20that%20shows%20the%20half-way%20concept." aria-label="Tumblr">
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fcaon.io%2fposts%2frecon-tips-fuzz-machine%2f&name=Recon%20Tips%20-%20Fuzz%20Machine%20Setup&description=If%20you%20are%20a%20security%20researcher%2c%20security%20engineer%2c%20red%20teamer%2c%20bug%20hunter%20or%20really%20anything%20related%20to%20security%2c%20you%20will%2c%20eventually%2c%20realize%20that%20it%20is%20next%20to%20impossible%20to%20keep%20everything%20mapped%20together%20in%20a%20company%20with%20a%20large%20infrastructure.%20Especially%20when%20needing%20to%20test%20from%20a%20blackbox%20approach.%0aThere%26rsquo%3bs%20a%20lot%20of%20ground%20to%20cover%2c%20to%20keep%20servers%20secure%20it%20is%20necessary%20to%20have%20a%20minimum%20amount%20of%20automation%20running." aria-label="Tumblr">
       <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
     </a>
   </li>
   <li>
-    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fcaon.io%2fposts%2fcve-2021-38314writeup%2f&t=CVE%202021%2038314%20-%20WordPress%20and%20Redux%20Write%20up" aria-label="Hacker News">
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fcaon.io%2fposts%2frecon-tips-fuzz-machine%2f&t=Recon%20Tips%20-%20Fuzz%20Machine%20Setup" aria-label="Hacker News">
       <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
     </a>
   </li>

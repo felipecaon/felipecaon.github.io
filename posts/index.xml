@@ -6,7 +6,17 @@
     <description>Recent content in Posts on caon.io</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pr-br</language>
-    <lastBuildDate>Tue, 12 Oct 2021 22:49:07 -0300</lastBuildDate><atom:link href="https://caon.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 20 Oct 2021 08:54:31 -0300</lastBuildDate><atom:link href="https://caon.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Recon Tips - Fuzz Machine Setup</title>
+      <link>https://caon.io/posts/recon-tips-fuzz-machine/</link>
+      <pubDate>Wed, 20 Oct 2021 08:54:31 -0300</pubDate>
+      
+      <guid>https://caon.io/posts/recon-tips-fuzz-machine/</guid>
+      <description>If you are a security researcher, security engineer, red teamer, bug hunter or really anything related to security, you will, eventually, realize that it is next to impossible to keep everything mapped together in a company with a large infrastructure. Especially when needing to test from a blackbox approach.
+There&amp;rsquo;s a lot of ground to cover, to keep servers secure it is necessary to have a minimum amount of automation running.</description>
+    </item>
+    
     <item>
       <title>CVE 2021 38314 - WordPress and Redux Write up</title>
       <link>https://caon.io/posts/cve-2021-38314writeup/</link>
