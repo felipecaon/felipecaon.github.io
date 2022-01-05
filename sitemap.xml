@@ -1,27 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  <url>
-    <loc>https://caon.io/</loc>
-    <lastmod>2021-10-20T08:54:31-03:00</lastmod>
-  </url><url>
-    <loc>https://caon.io/posts/</loc>
-    <lastmod>2021-10-20T08:54:31-03:00</lastmod>
-  </url><url>
-    <loc>https://caon.io/posts/recon-tips-fuzz-machine/</loc>
-    <lastmod>2021-10-20T08:54:31-03:00</lastmod>
-  </url><url>
-    <loc>https://caon.io/posts/cve-2021-38314writeup/</loc>
-    <lastmod>2021-10-12T22:49:07-03:00</lastmod>
-  </url><url>
-    <loc>https://caon.io/tips/</loc>
-    <lastmod>2021-09-15T10:01:56-03:00</lastmod>
-  </url><url>
-    <loc>https://caon.io/posts/sample/</loc>
-    <lastmod>2021-09-01T22:57:29-03:00</lastmod>
-  </url><url>
-    <loc>https://caon.io/categories/</loc>
-  </url><url>
-    <loc>https://caon.io/tags/</loc>
-  </url>
-</urlset>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <sitemap>
+    <loc>https://example.com/en/sitemap.xml</loc>
+    
+      <lastmod>2022-01-05T11:29:14-03:00</lastmod>
+    
+  </sitemap>
+  
+  <sitemap>
+    <loc>https://example.com/ru/sitemap.xml</loc>
+    
+  </sitemap>
+  
+  <sitemap>
+    <loc>https://example.com/zh/sitemap.xml</loc>
+    
+  </sitemap>
+  
+</sitemapindex>
