@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-	<meta name="generator" content="Hugo 0.115.3">
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Welcome # This site contains mostly stuff about appsec that may be helpful for read teamers or bug bounty hunters out there.
-Everything written in here and in the following pages was acquired by reading articles, books, watching videos and talks. None of this is exclusive, if you want to copy, feel free.
-The basics # Hacking is like building a house, you need to construct a foundation before making the roof.">
+<meta name="description" content=" Dorks # Google # # https://github.com/six2dez/degoogle_hunter ./degoogle_hunter.sh example.com # https://github.com/m3n0sd0n4ld/uDork ./uDork.sh united.com -u all ./uDork.sh united.com -e all # https://dorks.faisalahmed.me/ # Google dork helper, input url and the sites generates dorks site:npmjs.com &#34;company&#34; site:npm.runkit.com &#34;company&#34; site:pastebin.com &#34;company&#34; site:productforums.google.com &#34;company&#34; site:bitbucket.org &#34;company&#34; site:*.atlassian.net &#34;company&#34; site:trello.com &#34;company&#34; site:prezi.com &#34;company&#34; inurl:gitlab.com &#34;company&#34; Github # #https://github.com/obheda12/GitDorker python3 GitDorker.py -tf github_tokens -q example.com -p -ri -d Dorks/medium_dorks.txt -o gitdorker_out.txt # https://vsec7.github.io/ # Git dork helper, input url and the site generates dorks org:company &#34;firebase&#34; org:company &#34;password&#34; org:company &#34;bucket_name&#34; org:company &#34;aws_access_key&#34; org:company &#34;aws_secret_key&#34; org:company &#34;S3_BUCKET&#34; org:company &#34;S3_ACCESS_KEY_ID&#34; org:company &#34;S3_SECRET_ACCESS_KEY&#34; org:company &#34;S3_ENDPOINT&#34; org:company &#34;AWS_ACCESS_KEY_ID&#34; org:company &#34;list_aws_accounts&#34; ">
 <meta name="theme-color" content="#FFFFFF">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="Introduction" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://caon.io/" />
-<title>Introduction | caon.io</title>
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="" />
+<meta property="og:description" content=" Dorks # Google # # https://github.com/six2dez/degoogle_hunter ./degoogle_hunter.sh example.com # https://github.com/m3n0sd0n4ld/uDork ./uDork.sh united.com -u all ./uDork.sh united.com -e all # https://dorks.faisalahmed.me/ # Google dork helper, input url and the sites generates dorks site:npmjs.com &#34;company&#34; site:npm.runkit.com &#34;company&#34; site:pastebin.com &#34;company&#34; site:productforums.google.com &#34;company&#34; site:bitbucket.org &#34;company&#34; site:*.atlassian.net &#34;company&#34; site:trello.com &#34;company&#34; site:prezi.com &#34;company&#34; inurl:gitlab.com &#34;company&#34; Github # #https://github.com/obheda12/GitDorker python3 GitDorker.py -tf github_tokens -q example.com -p -ri -d Dorks/medium_dorks.txt -o gitdorker_out.txt # https://vsec7.github.io/ # Git dork helper, input url and the site generates dorks org:company &#34;firebase&#34; org:company &#34;password&#34; org:company &#34;bucket_name&#34; org:company &#34;aws_access_key&#34; org:company &#34;aws_secret_key&#34; org:company &#34;S3_BUCKET&#34; org:company &#34;S3_ACCESS_KEY_ID&#34; org:company &#34;S3_SECRET_ACCESS_KEY&#34; org:company &#34;S3_ENDPOINT&#34; org:company &#34;AWS_ACCESS_KEY_ID&#34; org:company &#34;list_aws_accounts&#34; " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://caon.io/recon/dorks/" /><meta property="article:section" content="recon" />
+
+
+<title>Dorks | caon.io</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.46181bc93375ba932026e753b37c40e6ff8bb16a9ef770c78bcc663e4577b1ba.css" integrity="sha256-RhgbyTN1upMgJudTs3xA5v&#43;LsWqe93DHi8xmPkV3sbo=" crossorigin="anonymous">
@@ -29,7 +28,6 @@ if (!doNotTrack) {
 	gtag('config', 'G-YNBNGF8X6V', { 'anonymize_ip': false });
 }
 </script>
-<link rel="alternate" type="application/rss+xml" href="https://caon.io/index.xml" title="caon.io" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -102,7 +100,7 @@ https://github.com/alex-shpak/hugo-book
 <li>
 <p>Content Discovery</p>
 <ul>
-<li><a href="/recon/dorks/">Dorking</a></li>
+<li><a href="/recon/dorks/"class=active>Dorking</a></li>
 <li><a href="/recon/spider/">Spidering</a></li>
 <li><a href="/recon/fuzzing/">Fuzzing</a></li>
 <li><a href="/recon/paramdiscovery/">Params</a></li>
@@ -292,7 +290,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>Introduction</strong>
+  <strong>Dorks</strong>
 
   <label for="toc-control">
     
@@ -308,11 +306,12 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#welcome">Welcome</a></li>
-    <li><a href="#the-basics">The basics</a></li>
-    <li><a href="#blue-team">Blue Team</a></li>
-    <li><a href="#newsletter">Newsletter</a></li>
-    <li><a href="#cve-pocs">CVE POC&rsquo;s</a></li>
+    <li><a href="#dorks">Dorks</a>
+      <ul>
+        <li><a href="#google">Google</a></li>
+        <li><a href="#github">Github</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -325,52 +324,53 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h1 id="welcome">
-  Welcome
-  <a class="anchor" href="#welcome">#</a>
+  <article class="markdown"><h1 id="dorks">
+  Dorks
+  <a class="anchor" href="#dorks">#</a>
 </h1>
-<p>This site contains mostly stuff about appsec that may be helpful for read teamers or bug bounty hunters out there.</p>
-<p>Everything written in here and in the following pages was acquired by reading articles, books, watching videos and talks. None of this is exclusive, if you want to copy, feel free.</p>
-<h1 id="the-basics">
-  The basics
-  <a class="anchor" href="#the-basics">#</a>
-</h1>
-<p>Hacking is like building a house, you need to construct a foundation before making the roof.</p>
-<ul>
-<li><a href="https://devhints.io/">Dev Hints</a></li>
-<li><a href="https://github.com/ziishaned/learn-regex">Learn Regex</a></li>
-<li><a href="https://sol.gfxile.net/dontask.html">The first rule</a></li>
-<li><a href="https://www.appsecmonkey.com/blog/web-application-security-checklist">Security Checklist</a></li>
-<li><a href="https://www.ranum.com/security/computer_security/editorials/dumb/">The Six Dumbest Ideas</a></li>
-<li><a href="https://application.security/free/owasp-top-10">OWASP TOP10</a></li>
-</ul>
-<h1 id="blue-team">
-  Blue Team
-  <a class="anchor" href="#blue-team">#</a>
-</h1>
-<ul>
-<li><a href="https://www.blueteamsacademy.com/">Blue Teaming</a></li>
-<li><a href="https://letsdefend.io/">Let&rsquo;s Defend</a></li>
-</ul>
-<h1 id="newsletter">
-  Newsletter
-  <a class="anchor" href="#newsletter">#</a>
-</h1>
-<p>Sources to keep you informed about sec world</p>
-<ul>
-<li><a href="https://tldrsec.com/">https://tldrsec.com/</a></li>
-<li><a href="https://danielmiessler.com/newsletter/">https://danielmiessler.com/newsletter/</a></li>
-<li><a href="https://securib.ee/newsletter/">https://securib.ee/newsletter/</a></li>
-</ul>
-<h1 id="cve-pocs">
-  CVE POC&rsquo;s
-  <a class="anchor" href="#cve-pocs">#</a>
-</h1>
-<ul>
-<li><a href="https://github.com/cckuailong/reapoc">https://github.com/cckuailong/reapoc</a></li>
-<li><a href="https://github.com/trickest/cve">https://github.com/trickest/cve</a></li>
-</ul>
-</article>
+<h2 id="google">
+  Google
+  <a class="anchor" href="#google">#</a>
+</h2>
+<pre tabindex="0"><code># https://github.com/six2dez/degoogle_hunter
+./degoogle_hunter.sh example.com
+
+# https://github.com/m3n0sd0n4ld/uDork
+./uDork.sh united.com -u all
+./uDork.sh united.com -e all
+
+# https://dorks.faisalahmed.me/
+# Google dork helper, input url and the sites generates dorks
+</code></pre><pre tabindex="0"><code>site:npmjs.com &#34;company&#34;
+site:npm.runkit.com &#34;company&#34;
+site:pastebin.com &#34;company&#34;
+site:productforums.google.com &#34;company&#34;
+site:bitbucket.org &#34;company&#34;
+site:*.atlassian.net &#34;company&#34;
+site:trello.com &#34;company&#34;
+site:prezi.com &#34;company&#34;
+inurl:gitlab.com &#34;company&#34;
+</code></pre><h2 id="github">
+  Github
+  <a class="anchor" href="#github">#</a>
+</h2>
+<pre tabindex="0"><code>#https://github.com/obheda12/GitDorker
+python3 GitDorker.py -tf github_tokens -q example.com -p -ri -d Dorks/medium_dorks.txt -o gitdorker_out.txt
+
+# https://vsec7.github.io/
+# Git dork helper, input url and the site generates dorks
+</code></pre><pre tabindex="0"><code>org:company &#34;firebase&#34;
+org:company &#34;password&#34;
+org:company &#34;bucket_name&#34;
+org:company &#34;aws_access_key&#34;
+org:company &#34;aws_secret_key&#34;
+org:company &#34;S3_BUCKET&#34;
+org:company &#34;S3_ACCESS_KEY_ID&#34;
+org:company &#34;S3_SECRET_ACCESS_KEY&#34;
+org:company &#34;S3_ENDPOINT&#34;
+org:company &#34;AWS_ACCESS_KEY_ID&#34;
+org:company &#34;list_aws_accounts&#34;
+</code></pre></article>
  
       
 
@@ -407,11 +407,12 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#welcome">Welcome</a></li>
-    <li><a href="#the-basics">The basics</a></li>
-    <li><a href="#blue-team">Blue Team</a></li>
-    <li><a href="#newsletter">Newsletter</a></li>
-    <li><a href="#cve-pocs">CVE POC&rsquo;s</a></li>
+    <li><a href="#dorks">Dorks</a>
+      <ul>
+        <li><a href="#google">Google</a></li>
+        <li><a href="#github">Github</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 

@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-	<meta name="generator" content="Hugo 0.115.3">
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Welcome # This site contains mostly stuff about appsec that may be helpful for read teamers or bug bounty hunters out there.
-Everything written in here and in the following pages was acquired by reading articles, books, watching videos and talks. None of this is exclusive, if you want to copy, feel free.
-The basics # Hacking is like building a house, you need to construct a foundation before making the roof.">
+<meta name="description" content="Passive Resources # A passive resource means that you will grab subdomains that were already discovered by another tools or were found lying around in some place (open source code, legacy scripts, logs, etc).
+# https://github.com/OWASP/Amass amass enum -passive -d domain.com # https://github.com/projectdiscovery/subfinder subfinder -d domain.com -all -silent # https://github.com/tomnomnom/assetfinder assetfinder --subs-only example.com # https://github.com/Findomain/Findomain findomain -u example.com -q # https://github.com/lc/gau # https://github.com/tomnomnom/unfurl gau --subs example.com | unfurl -u domains All in one script # amass enum -passive -d domain.">
 <meta name="theme-color" content="#FFFFFF">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="Introduction" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://caon.io/" />
-<title>Introduction | caon.io</title>
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="" />
+<meta property="og:description" content="Passive Resources # A passive resource means that you will grab subdomains that were already discovered by another tools or were found lying around in some place (open source code, legacy scripts, logs, etc).
+# https://github.com/OWASP/Amass amass enum -passive -d domain.com # https://github.com/projectdiscovery/subfinder subfinder -d domain.com -all -silent # https://github.com/tomnomnom/assetfinder assetfinder --subs-only example.com # https://github.com/Findomain/Findomain findomain -u example.com -q # https://github.com/lc/gau # https://github.com/tomnomnom/unfurl gau --subs example.com | unfurl -u domains All in one script # amass enum -passive -d domain." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://caon.io/recon/subdomain/passive/" /><meta property="article:section" content="recon" />
+
+
+<title>Passive | caon.io</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.46181bc93375ba932026e753b37c40e6ff8bb16a9ef770c78bcc663e4577b1ba.css" integrity="sha256-RhgbyTN1upMgJudTs3xA5v&#43;LsWqe93DHi8xmPkV3sbo=" crossorigin="anonymous">
@@ -29,7 +30,6 @@ if (!doNotTrack) {
 	gtag('config', 'G-YNBNGF8X6V', { 'anonymize_ip': false });
 }
 </script>
-<link rel="alternate" type="application/rss+xml" href="https://caon.io/index.xml" title="caon.io" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -83,7 +83,7 @@ https://github.com/alex-shpak/hugo-book
 <li>
 <p>Subdomain Enumeration</p>
 <ul>
-<li><a href="/recon/subdomain/passive/">Passive</a></li>
+<li><a href="/recon/subdomain/passive/"class=active>Passive</a></li>
 <li><a href="/recon/subdomain/active/">Active</a></li>
 </ul>
 </li>
@@ -292,7 +292,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>Introduction</strong>
+  <strong>Passive</strong>
 
   <label for="toc-control">
     
@@ -308,11 +308,15 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#welcome">Welcome</a></li>
-    <li><a href="#the-basics">The basics</a></li>
-    <li><a href="#blue-team">Blue Team</a></li>
-    <li><a href="#newsletter">Newsletter</a></li>
-    <li><a href="#cve-pocs">CVE POC&rsquo;s</a></li>
+    <li><a href="#passive-resources">Passive Resources</a>
+      <ul>
+        <li><a href="#all-in-one-script">All in one script</a></li>
+        <li><a href="#third-party-websites">Third party websites</a></li>
+        <li><a href="#google-analytics-id">Google analytics ID</a></li>
+        <li><a href="#google-tag-manager">Google Tag Manager</a></li>
+        <li><a href="#favicon">Favicon</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -325,52 +329,83 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h1 id="welcome">
-  Welcome
-  <a class="anchor" href="#welcome">#</a>
+  <article class="markdown"><h1 id="passive-resources">
+  Passive Resources
+  <a class="anchor" href="#passive-resources">#</a>
 </h1>
-<p>This site contains mostly stuff about appsec that may be helpful for read teamers or bug bounty hunters out there.</p>
-<p>Everything written in here and in the following pages was acquired by reading articles, books, watching videos and talks. None of this is exclusive, if you want to copy, feel free.</p>
-<h1 id="the-basics">
-  The basics
-  <a class="anchor" href="#the-basics">#</a>
-</h1>
-<p>Hacking is like building a house, you need to construct a foundation before making the roof.</p>
+<p>A passive resource means that you will grab subdomains that were already discovered by another tools or were found lying around in some place (open source code, legacy scripts, logs, etc).</p>
+<pre tabindex="0"><code># https://github.com/OWASP/Amass
+amass enum -passive -d domain.com
+
+# https://github.com/projectdiscovery/subfinder
+subfinder -d domain.com -all -silent
+
+# https://github.com/tomnomnom/assetfinder
+assetfinder --subs-only example.com
+
+# https://github.com/Findomain/Findomain
+findomain -u example.com -q
+
+# https://github.com/lc/gau
+# https://github.com/tomnomnom/unfurl
+gau --subs example.com | unfurl -u domains
+</code></pre><h2 id="all-in-one-script">
+  All in one script
+  <a class="anchor" href="#all-in-one-script">#</a>
+</h2>
+<pre tabindex="0"><code>amass enum -passive -d domain.com -o amass_$1.txt &gt; /dev/null 2&gt;&amp;1
+echo &#34;[+] Amass done&#34;
+
+subfinder -silent -d $1 -all -o subfinder_$1.txt &gt; /dev/null 2&gt;&amp;1
+echo &#34;[+] Subfinder done&#34;
+
+findomain -t $1 -u findomain_$1.txt &gt; /dev/null 2&gt;&amp;1
+echo &#34;[+] Findomain done&#34;
+
+assetfinder -subs-only $1 &gt; assetfinder_$1.txt
+echo &#34;[+] Assetfinder done&#34;
+
+cat subfinder_$1.txt findomain_$1.txt assetfinder_$1.txt amass_$1.txt | uniq $1_subdomains
+rm subfinder_$1.txt findomain_$1.txt assetfinder_$1.txt amass_$1.txt
+</code></pre><h2 id="third-party-websites">
+  Third party websites
+  <a class="anchor" href="#third-party-websites">#</a>
+</h2>
+<p>The following list contains sites that may have additional subdomains:</p>
 <ul>
-<li><a href="https://devhints.io/">Dev Hints</a></li>
-<li><a href="https://github.com/ziishaned/learn-regex">Learn Regex</a></li>
-<li><a href="https://sol.gfxile.net/dontask.html">The first rule</a></li>
-<li><a href="https://www.appsecmonkey.com/blog/web-application-security-checklist">Security Checklist</a></li>
-<li><a href="https://www.ranum.com/security/computer_security/editorials/dumb/">The Six Dumbest Ideas</a></li>
-<li><a href="https://application.security/free/owasp-top-10">OWASP TOP10</a></li>
+<li><a href="https://chaos.projectdiscovery.io/">https://chaos.projectdiscovery.io/</a></li>
+<li><a href="https://jldc.me/anubis/subdomains/site.com">https://jldc.me/anubis/subdomains/site.com</a></li>
+<li><a href="https://dataset.domainsproject.org/">https://dataset.domainsproject.org/</a></li>
+<li><a href="https://phonebook.cz/">https://phonebook.cz/</a></li>
+<li><a href="https://suip.biz/?act=subfinder">https://suip.biz/?act=subfinder</a></li>
 </ul>
-<h1 id="blue-team">
-  Blue Team
-  <a class="anchor" href="#blue-team">#</a>
-</h1>
+<h2 id="google-analytics-id">
+  Google analytics ID
+  <a class="anchor" href="#google-analytics-id">#</a>
+</h2>
+<p>Extract Google tag manager from webiste, format: <code>UAXXXXXX</code></p>
 <ul>
-<li><a href="https://www.blueteamsacademy.com/">Blue Teaming</a></li>
-<li><a href="https://letsdefend.io/">Let&rsquo;s Defend</a></li>
+<li><a href="https://builtwith.com/relationships/tag/UAXXXXXX">https://builtwith.com/relationships/tag/UAXXXXXX</a></li>
+<li><a href="https://api.hackertarget.com/analyticslookup/?q=UAXXXXXX">https://api.hackertarget.com/analyticslookup/?q=UAXXXXXX</a></li>
+<li><a href="https://spyonweb.com/UAXXXXXX">https://spyonweb.com/UAXXXXXX</a></li>
 </ul>
-<h1 id="newsletter">
-  Newsletter
-  <a class="anchor" href="#newsletter">#</a>
-</h1>
-<p>Sources to keep you informed about sec world</p>
+<pre tabindex="0"><code># https://github.com/Josue87/AnalyticsRelationships
+cat subdomains.txt | analyticsrelationships
+</code></pre><h2 id="google-tag-manager">
+  Google Tag Manager
+  <a class="anchor" href="#google-tag-manager">#</a>
+</h2>
+<pre tabindex="0"><code>https://googletagmanager.com/gtm.js?id=TAGID
+</code></pre><h2 id="favicon">
+  Favicon
+  <a class="anchor" href="#favicon">#</a>
+</h2>
+<p>Search for favicon md5 value in known search engines to find websites related to your search</p>
 <ul>
-<li><a href="https://tldrsec.com/">https://tldrsec.com/</a></li>
-<li><a href="https://danielmiessler.com/newsletter/">https://danielmiessler.com/newsletter/</a></li>
-<li><a href="https://securib.ee/newsletter/">https://securib.ee/newsletter/</a></li>
+<li><a href="https://faviconhash.com/">https://faviconhash.com/</a></li>
 </ul>
-<h1 id="cve-pocs">
-  CVE POC&rsquo;s
-  <a class="anchor" href="#cve-pocs">#</a>
-</h1>
-<ul>
-<li><a href="https://github.com/cckuailong/reapoc">https://github.com/cckuailong/reapoc</a></li>
-<li><a href="https://github.com/trickest/cve">https://github.com/trickest/cve</a></li>
-</ul>
-</article>
+<pre tabindex="0"><code>Tip: Use http.favicon.hash:&lt;hash&gt; on Shodan to hunt phishing sites.
+</code></pre></article>
  
       
 
@@ -407,11 +442,15 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#welcome">Welcome</a></li>
-    <li><a href="#the-basics">The basics</a></li>
-    <li><a href="#blue-team">Blue Team</a></li>
-    <li><a href="#newsletter">Newsletter</a></li>
-    <li><a href="#cve-pocs">CVE POC&rsquo;s</a></li>
+    <li><a href="#passive-resources">Passive Resources</a>
+      <ul>
+        <li><a href="#all-in-one-script">All in one script</a></li>
+        <li><a href="#third-party-websites">Third party websites</a></li>
+        <li><a href="#google-analytics-id">Google analytics ID</a></li>
+        <li><a href="#google-tag-manager">Google Tag Manager</a></li>
+        <li><a href="#favicon">Favicon</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 

@@ -1,18 +1,25 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-	<meta name="generator" content="Hugo 0.115.3">
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Welcome # This site contains mostly stuff about appsec that may be helpful for read teamers or bug bounty hunters out there.
-Everything written in here and in the following pages was acquired by reading articles, books, watching videos and talks. None of this is exclusive, if you want to copy, feel free.
-The basics # Hacking is like building a house, you need to construct a foundation before making the roof.">
+<meta name="description" content="Fuzzing # Rate Limited?
+Try to run techniques from 403 Bypass
+Configure your options! ffuf runs by default with ffuf custom user agent, some sites will not trust that and return dummy data. The solution for this is to implement a .ffufrc file with real headers:
+https://gist.github.com/felipecaon/d1e7c980d7bab1312ea81df1d0241f42
+# https://github.com/ffuf/ffuf ffuf -w /path/to/wordlist -u https://target/FUZZ # Multiple sources ffuf -w http-methods:METHOD -w payloads:PAYLOAD -w headers:HEADER -u &#34;https://example.com/PAYLOAD&#34; -H &#34;HEADER:127.0.0.1&#34; -X &#34;METHOD&#34; # Multiple URLs and mutiple files example ffuf -u URL/FUZZ -w allipstoffuf:URL -w ~/.">
 <meta name="theme-color" content="#FFFFFF">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="Introduction" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://caon.io/" />
-<title>Introduction | caon.io</title>
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="" />
+<meta property="og:description" content="Fuzzing # Rate Limited?
+Try to run techniques from 403 Bypass
+Configure your options! ffuf runs by default with ffuf custom user agent, some sites will not trust that and return dummy data. The solution for this is to implement a .ffufrc file with real headers:
+https://gist.github.com/felipecaon/d1e7c980d7bab1312ea81df1d0241f42
+# https://github.com/ffuf/ffuf ffuf -w /path/to/wordlist -u https://target/FUZZ # Multiple sources ffuf -w http-methods:METHOD -w payloads:PAYLOAD -w headers:HEADER -u &#34;https://example.com/PAYLOAD&#34; -H &#34;HEADER:127.0.0.1&#34; -X &#34;METHOD&#34; # Multiple URLs and mutiple files example ffuf -u URL/FUZZ -w allipstoffuf:URL -w ~/." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://caon.io/recon/fuzzing/" /><meta property="article:section" content="recon" />
+
+
+<title>Fuzzing | caon.io</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.46181bc93375ba932026e753b37c40e6ff8bb16a9ef770c78bcc663e4577b1ba.css" integrity="sha256-RhgbyTN1upMgJudTs3xA5v&#43;LsWqe93DHi8xmPkV3sbo=" crossorigin="anonymous">
@@ -29,7 +36,6 @@ if (!doNotTrack) {
 	gtag('config', 'G-YNBNGF8X6V', { 'anonymize_ip': false });
 }
 </script>
-<link rel="alternate" type="application/rss+xml" href="https://caon.io/index.xml" title="caon.io" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -104,7 +110,7 @@ https://github.com/alex-shpak/hugo-book
 <ul>
 <li><a href="/recon/dorks/">Dorking</a></li>
 <li><a href="/recon/spider/">Spidering</a></li>
-<li><a href="/recon/fuzzing/">Fuzzing</a></li>
+<li><a href="/recon/fuzzing/"class=active>Fuzzing</a></li>
 <li><a href="/recon/paramdiscovery/">Params</a></li>
 <li><a href="/recon/thirdparty/">Third Party</a></li>
 </ul>
@@ -292,7 +298,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>Introduction</strong>
+  <strong>Fuzzing</strong>
 
   <label for="toc-control">
     
@@ -308,11 +314,14 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#welcome">Welcome</a></li>
-    <li><a href="#the-basics">The basics</a></li>
-    <li><a href="#blue-team">Blue Team</a></li>
-    <li><a href="#newsletter">Newsletter</a></li>
-    <li><a href="#cve-pocs">CVE POC&rsquo;s</a></li>
+    <li><a href="#fuzzing">Fuzzing</a>
+      <ul>
+        <li><a href="#remove-noise">Remove noise</a></li>
+        <li><a href="#backup-files">Backup Files</a></li>
+        <li><a href="#recollpase">Recollpase</a></li>
+        <li><a href="#wordlists">Wordlists</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -325,51 +334,94 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h1 id="welcome">
-  Welcome
-  <a class="anchor" href="#welcome">#</a>
+  <article class="markdown"><h1 id="fuzzing">
+  Fuzzing
+  <a class="anchor" href="#fuzzing">#</a>
 </h1>
-<p>This site contains mostly stuff about appsec that may be helpful for read teamers or bug bounty hunters out there.</p>
-<p>Everything written in here and in the following pages was acquired by reading articles, books, watching videos and talks. None of this is exclusive, if you want to copy, feel free.</p>
-<h1 id="the-basics">
-  The basics
-  <a class="anchor" href="#the-basics">#</a>
-</h1>
-<p>Hacking is like building a house, you need to construct a foundation before making the roof.</p>
+<blockquote class="book-hint info">
+  <p><strong>Rate Limited?</strong></p>
+<p>Try to run techniques from <a href="https://caon.io/docs/exploitation/403bypass/">403 Bypass</a></p>
+
+</blockquote>
+
+<blockquote class="book-hint info">
+  <p><strong>Configure your options!</strong>
+ffuf runs by default with ffuf custom user agent, some sites will not trust that and return dummy data.
+The solution for this is to implement a .ffufrc file with real headers:</p>
+<p><a href="https://gist.github.com/felipecaon/d1e7c980d7bab1312ea81df1d0241f42">https://gist.github.com/felipecaon/d1e7c980d7bab1312ea81df1d0241f42</a></p>
+
+</blockquote>
+
+<pre tabindex="0"><code># https://github.com/ffuf/ffuf
+ffuf -w /path/to/wordlist -u https://target/FUZZ
+
+# Multiple sources
+ffuf -w http-methods:METHOD -w payloads:PAYLOAD -w headers:HEADER -u &#34;https://example.com/PAYLOAD&#34; -H &#34;HEADER:127.0.0.1&#34; -X &#34;METHOD&#34;
+
+# Multiple URLs and mutiple files example
+ffuf -u URL/FUZZ -w allipstoffuf:URL -w ~/.config/wordlists/envpath:FUZZ -maxtime 300 -t 500 -c -v
+
+# Cool ffuf flags
+-ac: Calibrate requests to unmatch false positives
+-recursion: recursion
+-se: Stop on erors
+-sf: Stop on 95% 403 Forbidden, possible WAF ban
+</code></pre><h2 id="remove-noise">
+  Remove noise
+  <a class="anchor" href="#remove-noise">#</a>
+</h2>
+<p>Ffuf can generate a large output, even with <code>-ac</code> flag enabled. To filter dummy and extract only juicy information, it is possible to use <code>ffufPostprocessing</code></p>
+<pre tabindex="0"><code># https://github.com/Damian89/ffufPostprocessing
+ffufPostprocessing -result-file /tmp/ffuf/results.json -bodies-folder /tmp/ffuf/bodies/ -delete-bodies -overwrite-result-file
+</code></pre><h2 id="backup-files">
+  Backup Files
+  <a class="anchor" href="#backup-files">#</a>
+</h2>
+<p>Tempers file to find possible backup files based in file name</p>
+<pre tabindex="0"><code># https://github.com/mazen160/bfac
+bfac --no-text --url http://example.com/test.php --level 2
+</code></pre><h2 id="recollpase">
+  Recollpase
+  <a class="anchor" href="#recollpase">#</a>
+</h2>
+<p>Generate a bunch of breaking-strings to test your target</p>
 <ul>
-<li><a href="https://devhints.io/">Dev Hints</a></li>
-<li><a href="https://github.com/ziishaned/learn-regex">Learn Regex</a></li>
-<li><a href="https://sol.gfxile.net/dontask.html">The first rule</a></li>
-<li><a href="https://www.appsecmonkey.com/blog/web-application-security-checklist">Security Checklist</a></li>
-<li><a href="https://www.ranum.com/security/computer_security/editorials/dumb/">The Six Dumbest Ideas</a></li>
-<li><a href="https://application.security/free/owasp-top-10">OWASP TOP10</a></li>
+<li><a href="https://github.com/0xacb/recollapse">https://github.com/0xacb/recollapse</a></li>
 </ul>
-<h1 id="blue-team">
-  Blue Team
-  <a class="anchor" href="#blue-team">#</a>
-</h1>
-<ul>
-<li><a href="https://www.blueteamsacademy.com/">Blue Teaming</a></li>
-<li><a href="https://letsdefend.io/">Let&rsquo;s Defend</a></li>
-</ul>
-<h1 id="newsletter">
-  Newsletter
-  <a class="anchor" href="#newsletter">#</a>
-</h1>
-<p>Sources to keep you informed about sec world</p>
-<ul>
-<li><a href="https://tldrsec.com/">https://tldrsec.com/</a></li>
-<li><a href="https://danielmiessler.com/newsletter/">https://danielmiessler.com/newsletter/</a></li>
-<li><a href="https://securib.ee/newsletter/">https://securib.ee/newsletter/</a></li>
-</ul>
-<h1 id="cve-pocs">
-  CVE POC&rsquo;s
-  <a class="anchor" href="#cve-pocs">#</a>
-</h1>
-<ul>
-<li><a href="https://github.com/cckuailong/reapoc">https://github.com/cckuailong/reapoc</a></li>
-<li><a href="https://github.com/trickest/cve">https://github.com/trickest/cve</a></li>
-</ul>
+<h2 id="wordlists">
+  Wordlists
+  <a class="anchor" href="#wordlists">#</a>
+</h2>
+<table>
+<thead>
+<tr>
+<th>URL</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/p0dalirius/webapp-wordlists">https://github.com/p0dalirius/webapp-wordlists</a></td>
+<td>This repo contains wordlists for a lot of webapps</td>
+</tr>
+<tr>
+<td><a href="https://github.com/six2dez/OneListForAll">https://github.com/six2dez/OneListForAll</a></td>
+<td>Huge list of paths and files</td>
+</tr>
+<tr>
+<td><a href="https://github.com/TheKingOfDuck/fuzzDicts">https://github.com/TheKingOfDuck/fuzzDicts</a></td>
+<td>Collection of lists for fuzzing</td>
+</tr>
+<tr>
+<td><a href="https://github.com/tennc/fuzzdb">https://github.com/tennc/fuzzdb</a></td>
+<td>Collection of lists for fuzzing</td>
+</tr>
+<tr>
+<td><a href="https://github.com/the-xentropy/samlists">https://github.com/the-xentropy/samlists</a></td>
+<td>List of files, paths and parameter based on usage in the wild</td>
+</tr>
+</tbody>
+</table>
 </article>
  
       
@@ -407,11 +459,14 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#welcome">Welcome</a></li>
-    <li><a href="#the-basics">The basics</a></li>
-    <li><a href="#blue-team">Blue Team</a></li>
-    <li><a href="#newsletter">Newsletter</a></li>
-    <li><a href="#cve-pocs">CVE POC&rsquo;s</a></li>
+    <li><a href="#fuzzing">Fuzzing</a>
+      <ul>
+        <li><a href="#remove-noise">Remove noise</a></li>
+        <li><a href="#backup-files">Backup Files</a></li>
+        <li><a href="#recollpase">Recollpase</a></li>
+        <li><a href="#wordlists">Wordlists</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
